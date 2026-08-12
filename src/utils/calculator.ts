@@ -76,7 +76,9 @@ export function calculatorReducer(state: CalculatorState, action: CalculatorActi
       }
       if (state.operator !== null && state.previousValue !== null) {
         const result = calculate(state.previousValue, current, state.operator)
-        if (result === null) return { ...initialCalculatorState, display: 'Error', isError: true }
+        if (result === null || !Number.isFinite(result)) {
+          return { ...initialCalculatorState, display: 'Error', isError: true }
+        }
         return {
           display: formatResult(result),
           previousValue: result,
@@ -92,7 +94,9 @@ export function calculatorReducer(state: CalculatorState, action: CalculatorActi
       if (state.operator === null || state.previousValue === null) return state
       const current = parseFloat(state.display)
       const result = calculate(state.previousValue, current, state.operator)
-      if (result === null) return { ...initialCalculatorState, display: 'Error', isError: true }
+      if (result === null || !Number.isFinite(result)) {
+        return { ...initialCalculatorState, display: 'Error', isError: true }
+      }
       return {
         display: formatResult(result),
         previousValue: null,

@@ -76,6 +76,14 @@ describe('calculatorReducer', () => {
     expect(state.isError).toBe(true)
   })
 
+  it('演算結果がオーバーフローした場合も isError が true になる', () => {
+    const huge: CalculatorState = { ...initialCalculatorState, display: '1e300' }
+    const state = calculatorReducer(huge, { type: 'operator', operator: '×' })
+    const next = calculatorReducer({ ...state, display: '1e300' }, { type: 'equals' })
+    expect(next.display).toBe('Error')
+    expect(next.isError).toBe(true)
+  })
+
   it('Error 状態から数字を入力すると自動的にリセットされる', () => {
     const errorState = dispatchAll(initialCalculatorState, [
       { type: 'digit', digit: '5' },
