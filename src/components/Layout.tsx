@@ -23,6 +23,9 @@ function Layout() {
             <NavLink to="/contact" className={navLinkClass}>
               Contact
             </NavLink>
+            <NavLink to="/calculator" className={navLinkClass}>
+              Calculator
+            </NavLink>
           </div>
         </nav>
       </header>
