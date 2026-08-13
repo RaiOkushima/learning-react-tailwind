@@ -11,17 +11,14 @@ function Layout() {
       <header className="border-b border-slate-200 bg-white">
         <nav className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
           <Link to="/" className="text-lg font-bold text-slate-900">
-            Learning App
+            React + Tailwind CSS 学習App
           </Link>
           <div className="flex gap-2">
             <NavLink to="/" end className={navLinkClass}>
               Home
             </NavLink>
-            <NavLink to="/about" className={navLinkClass}>
-              About
-            </NavLink>
-            <NavLink to="/contact" className={navLinkClass}>
-              Contact
+            <NavLink to="/calculator" className={navLinkClass}>
+              Calculator
             </NavLink>
           </div>
         </nav>
